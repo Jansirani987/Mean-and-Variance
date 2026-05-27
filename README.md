@@ -43,40 +43,58 @@ It shows the distance of a random variable from its mean. It is calcualted as
       ![image](https://user-images.githubusercontent.com/103921593/192942852-913550a9-fabe-4a55-b956-0487b18bbd97.png)
 
 # Program :
+
 ```
-import numpy as np
-L = [int(i) for i in input("Enter arrival data: ").split()]
-N = len(L)
-M = max(L)
-X = []
-f = []
-for i in range(M + 1):
-    c = 0
-    for j in range(N):
-        if L[j] == i:
-            c += 1
-    f.append(c)
-    X.append(i)
-sf = np.sum(f)
-p = [f[i] / sf for i in range(M + 1)]
-mean = np.inner(X, p)
-EX2 = np.inner(np.square(X), p)
-var = EX2 - mean**2
-SD = np.sqrt(var)
-print("\nX\tp(x)")
-for i in range(M + 1):
-    if f[i] > 0:   # Only print arrivals that actually occurred
-        print(f"{X[i]}\t{p[i]:.3f}")
 
-print(f"\nThe Mean arrival rate is {mean:.3f}")
-print(f"The Variance of arrival from feeder is {var:.3f}")
-print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
+import numpy as np 
 
+L=[int(i) for i in input().split()] 
+
+N=len(L); M=max(L)  
+
+x=list();f=list() 
+
+for i in range (M+1): 
+
+    c = 0 
+
+    for j in range(N): 
+
+        if L[j]==i: 
+
+            c=c+1 
+
+    f.append(c) 
+
+    x.append(i) 
+
+sf=np.sum(f) 
+
+p=list() 
+
+for i in range(M+1): 
+
+    p.append(f[i]/sf)  
+
+mean=np.inner(x,p) 
+
+EX2=np.inner(np.square(x),p) 
+
+var=EX2-mean**2  
+
+SD=np.sqrt(var) 
+
+print("The Mean arrival rate is %.3f "%mean) 
+
+print("The Variance of arrival from feeder is %.3f "%var)  
+
+print("The Standard deviation of arrival from feeder is %.3F "%SD)
 ```
 
 
 # Output : 
-<img width="625" height="459" alt="image" src="https://github.com/user-attachments/assets/3974d3d9-40ca-4a2d-8568-a284e0eb78ce" />
+<img width="812" height="145" alt="image" src="https://github.com/user-attachments/assets/b5c62663-23ac-4324-a6a5-7e4fae2dde16" />
+
 
 # Results :
 The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
